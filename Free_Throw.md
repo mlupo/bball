@@ -1,255 +1,872 @@
-# Basketball!
+# Basketball Free Throw
 
-## Let's make a Basketball Game! @unplugged
-In this session we will do our best to make a kind of "Free Throw" style Basketball game!
+## Introduction @fullscreen
 
-In this game, your player will move back and forth, while trying to throw the ball into the net. 
+Line up your shot and see if you can slam dunk this Basketball free throw game!
 
-## _
-### Create/ Choose Background 
-First, we are going to create a background for the game. To do this, go into the ToolBox and find the ``||scene:Scene||`` category. 
-Then locate the block that says ``||scene:set background image to||`` and click and drag it onto your ``||loops:on start||`` block. 
-By clicking on the white square an image editor will open up. Try to draw your own Basketball key, or select the **Gallery** option at the top of the screen and select a background that you like.  
+![Free throw shot from player](/static/tutorials/free-throw/free-throw.gif)
 
-Click **Done** when you are finished and the new background you chose will show up in the simulator on the left side of the screen. 
+## Step 1 - Set the Background image
 
-## _
-### Create/ Choose Sprite 
-In the toolbox click the ``||sprites:Sprites||`` category. Select the first code block and drag and drop it underneath the background block.
-Select the **Gallery** button and pick a sprite character that you like. 
-
-To rename the sprite something more descriptive, click on the ``||variables:mySprite||`` dropdown and select ``||variables:rename variable||`` and then type in a name for the sprite that makes sense. 
+From the ``||scene:Scene||`` Toolbox drawer, drag a ``||scene:set background image||`` block onto
+the Workspace, and drop into the ``||loops:on start||`` block. In the ``||scene:set background image||``
+block, click on the grey oval to open the image editor, and draw half of a basketball court.
 
 ```blocks
-
-let superStar = sprites.create(img`
-    . f f f . f f f f . f f f . 
-    f f f f f c c c c f f f f f 
-    f f f f b c c c c b f f f f 
-    f f f c 3 c c c c 3 c f f f 
-    . f 3 3 c c c c c c 3 3 f . 
-    . f c c c c 4 4 c c c c f . 
-    . f f c c 4 4 4 4 c c f f . 
-    . f f f b f 4 4 f b f f f . 
-    . f f 4 1 f d d f 1 4 f f . 
-    . . f f d d d d d d f f . . 
-    . . e f e 4 4 4 4 e f e . . 
-    . e 4 f b 3 3 3 3 b f 4 e . 
-    . 4 d f 3 3 3 3 3 3 c d 4 . 
-    . 4 4 f 6 6 6 6 6 6 f 4 4 . 
-    . . . . f f f f f f . . . . 
-    . . . . f f . . f f . . . . 
-    `, SpriteKind.Player)
+scene.setBackgroundImage(img`
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+`)
 ```
 
-## _
-### Set Sprite Position 
-The sprite will appear in the middle of the game screen by default, but we can change that!
-Select the ``||sprites:Sprites||`` category in the toolbar and find the ``||sprites:set mySprite position to||``. 
+## Step 2 - Create the Player Character
 
-Change the values for the ``x`` and ``y`` coordinates (x represent horizontal movement and y represent vertical movement).
-Clicking inside the white box will open up a white grid that allows you to manually select where you want the sprite to go on the gameboard. For the purposes of this game, we want the spite to be located close to the bottom of the screen in the middle. 
+From the ``||sprites:Sprites||`` Toolbox drawer, drag a ``||variables:set mySprite||`` block and drop
+after the ``||scene:set background image||`` block. Click on the grey oval to open the sprite image
+editor, and draw or select a Gallery image for your player.
 
 ```blocks
-
-let superStar = sprites.create(img`
-    . f f f . f f f f . f f f . 
-    f f f f f c c c c f f f f f 
-    f f f f b c c c c b f f f f 
-    f f f c 3 c c c c 3 c f f f 
-    . f 3 3 c c c c c c 3 3 f . 
-    . f c c c c 4 4 c c c c f . 
-    . f f c c 4 4 4 4 c c f f . 
-    . f f f b f 4 4 f b f f f . 
-    . f f 4 1 f d d f 1 4 f f . 
-    . . f f d d d d d d f f . . 
-    . . e f e 4 4 4 4 e f e . . 
-    . e 4 f b 3 3 3 3 b f 4 e . 
-    . 4 d f 3 3 3 3 3 3 c d 4 . 
-    . 4 4 f 6 6 6 6 6 6 f 4 4 . 
-    . . . . f f f f f f . . . . 
-    . . . . f f . . f f . . . . 
-    `, SpriteKind.Player)
-// @highlight
-superStar.setPosition(80, 98)
+scene.setBackgroundImage(img`
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+`)
+let mySprite = sprites.create(img`
+    . f f f . f f f f . f f f .
+    f f f f f c c c c f f f f f
+    f f f f b c c c c b f f f f
+    f f f c 3 c c c c 3 c f f f
+    . f 3 3 c c c c c c 3 3 f .
+    . f c c c c 4 4 c c c c f .
+    . f f c c 4 4 4 4 c c f f .
+    . f f f b f 4 4 f b f f f .
+    . f f 4 1 f d d f 1 4 f f .
+    . . f f d d d d d d f f . .
+    . . e f e 4 4 4 4 e f e . .
+    . e 4 f b 3 3 3 3 b f 4 e .
+    . 4 d f 3 3 3 3 3 3 c d 4 .
+    . 4 4 f 6 6 6 6 6 6 f 4 4 .
+    . . . . f f f f f f . . . .
+    . . . . f f . . f f . . . .
+`, SpriteKind.Player)
 ```
 
-## _
-### Make the Player Move 
-For the purpose of this game, we want our player to move side to side along the bottom of the game screen.
-In the ``||sprites:Sprites||`` category, we need to find the ``||sprites:set my sprite velocity block||``. This  controls how quickly the sprite will move in different directions. 
-Since we don't want the sprite to move up or down, you can set the ``vy`` value to ``0``. 
+## Step 3 - Position the Player Character at the bottom of the screen
+
+From the ``||sprites:Sprites||`` Toolbox drawer, drag a ``||sprites:set sprite position||``
+block and drop after the ``||Sprites:set sprite||`` block. In the ``||sprites:set||``
+``||variables:mySprite||`` ``||sprites:position||`` block, click on the **x** coordinate,
+and using the coordinate picker, select a location at the bottom of the screen.
+
+![Set x position to 0](/static/tutorials/free-throw/x-position0.png)
+
+## Step 4 - Set the player's velocity (movement)
+
+From the ``||sprites:Sprites||`` Toolbox drawer, drag a ``||sprites:set||`` ``||variables:mySprite||``
+``||sprites:velocity||`` block and drop after the ``||sprites:set||`` ``||variables:mySprite||``
+``||sprites:position||`` block. Since we only want the player to move horizontally, set the **vy**
+value to be **0**.
 
 ```blocks
-let superStar = sprites.create(img`
-    . f f f . f f f f . f f f . 
-    f f f f f c c c c f f f f f 
-    f f f f b c c c c b f f f f 
-    f f f c 3 c c c c 3 c f f f 
-    . f 3 3 c c c c c c 3 3 f . 
-    . f c c c c 4 4 c c c c f . 
-    . f f c c 4 4 4 4 c c f f . 
-    . f f f b f 4 4 f b f f f . 
-    . f f 4 1 f d d f 1 4 f f . 
-    . . f f d d d d d d f f . . 
-    . . e f e 4 4 4 4 e f e . . 
-    . e 4 f b 3 3 3 3 b f 4 e . 
-    . 4 d f 3 3 3 3 3 3 c d 4 . 
-    . 4 4 f 6 6 6 6 6 6 f 4 4 . 
-    . . . . f f f f f f . . . . 
-    . . . . f f . . f f . . . . 
-    `, SpriteKind.Player)
-superStar.setPosition(80, 98)
-superStar.setVelocity(50, 0)
+scene.setBackgroundImage(img`
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+`)
+let mySprite = sprites.create(img`
+    . f f f . f f f f . f f f .
+    f f f f f c c c c f f f f f
+    f f f f b c c c c b f f f f
+    f f f c 3 c c c c 3 c f f f
+    . f 3 3 c c c c c c 3 3 f .
+    . f c c c c 4 4 c c c c f .
+    . f f c c 4 4 4 4 c c f f .
+    . f f f b f 4 4 f b f f f .
+    . f f 4 1 f d d f 1 4 f f .
+    . . f f d d d d d d f f . .
+    . . e f e 4 4 4 4 e f e . .
+    . e 4 f b 3 3 3 3 b f 4 e .
+    . 4 d f 3 3 3 3 3 3 c d 4 .
+    . 4 4 f 6 6 6 6 6 6 f 4 4 .
+    . . . . f f f f f f . . . .
+    . . . . f f . . f f . . . .
+`, SpriteKind.Player)
+mySprite.setPosition(82, 111)
+mySprite.setVelocity(50, 0)
 ```
 
-## _
-Next, we want the sprite to stay on the screen at all times. We will need to go to ``||sprites:Sprites||`` and find ``||sprites:set my sprite to stay on screen||``.
-Grab that block and drag in under the rest of the code. Ensure that the button is turned **ON** to ensure the sprite stays on the screen.
-Using the drop down menu from **stay on screen** we are going to select it to change it to **bounce on wall**. 
+## Step 5 - Make the player bounce off walls
+
+Notice in the game console window that our player actually moves off the screen! We don't want that.
+From the ``||sprites:Sprites||`` Toolbox drawer, drag a ``||sprites:set||`` ``||variables:mySprite||``
+``||sprites:stay in screen||`` block and drop after the ``||sprites:set||`` ``||variables:mySprite||``
+``||sprites:velocity||`` block. In the ``||sprites:set||`` ``||variables:mySprite||`` ``||sprites:stay in screen||``
+block, use the drop-down menu to select the property **bounce on wall**, and toggle the value to **true**.
 
 ```blocks
-
-let superStar = sprites.create(img`
-    . f f f . f f f f . f f f . 
-    f f f f f c c c c f f f f f 
-    f f f f b c c c c b f f f f 
-    f f f c 3 c c c c 3 c f f f 
-    . f 3 3 c c c c c c 3 3 f . 
-    . f c c c c 4 4 c c c c f . 
-    . f f c c 4 4 4 4 c c f f . 
-    . f f f b f 4 4 f b f f f . 
-    . f f 4 1 f d d f 1 4 f f . 
-    . . f f d d d d d d f f . . 
-    . . e f e 4 4 4 4 e f e . . 
-    . e 4 f b 3 3 3 3 b f 4 e . 
-    . 4 d f 3 3 3 3 3 3 c d 4 . 
-    . 4 4 f 6 6 6 6 6 6 f 4 4 . 
-    . . . . f f f f f f . . . . 
-    . . . . f f . . f f . . . . 
-    `, SpriteKind.Player)
-superStar.setPosition(80, 98)
-superStar.setVelocity(50, 0)
-// @highlight
-superStar.setFlag(SpriteFlag.BounceOnWall, true)
+scene.setBackgroundImage(img`
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+`)
+let mySprite = sprites.create(img`
+    . f f f . f f f f . f f f .
+    f f f f f c c c c f f f f f
+    f f f f b c c c c b f f f f
+    f f f c 3 c c c c 3 c f f f
+    . f 3 3 c c c c c c 3 3 f .
+    . f c c c c 4 4 c c c c f .
+    . f f c c 4 4 4 4 c c f f .
+    . f f f b f 4 4 f b f f f .
+    . f f 4 1 f d d f 1 4 f f .
+    . . f f d d d d d d f f . .
+    . . e f e 4 4 4 4 e f e . .
+    . e 4 f b 3 3 3 3 b f 4 e .
+    . 4 d f 3 3 3 3 3 3 c d 4 .
+    . 4 4 f 6 6 6 6 6 6 f 4 4 .
+    . . . . f f f f f f . . . .
+    . . . . f f . . f f . . . .
+`, SpriteKind.Player)
+mySprite.setPosition(82, 111)
+mySprite.setVelocity(50, 0)
+mySprite.setFlag(SpriteFlag.BounceOnWall, true)
 ```
 
-## _
-### Make Basketball Net 
-Next, we are going to make the basketball net. The reason that we do not draw the basketball net directly into the background, is because we want the net to be interactive with other sprites, therefore it needs to also be a sprite.
-In the ``||sprites:Sprite||`` category in the toolbar, select the first code block. Drag that button onto the rest of the code. 
-This sprite is defaulted to be called ``||variables:mySprite||`` we can rename it by clicking on it and selecting **rename variable**. We can call this sprite **net**. 
+## Step 6 - Create the Basketball Hoop
 
-This new sprite is not the kind **Player** as indicated, so we must change it. Using the drop down menu click on **Add new kind** and name this one **hoop**. 
+From the ``||sprites:Sprites||`` Toolbox drawer, drag another ``||variables:set mySprite||`` block and drop
+after the ``||sprites:set||`` ``||variables:mySprite||`` ``||sprites:bounce on wall||`` block. Click on the
+grey oval to open the sprite image editor, and draw an image of a basketball hoop.
 
-Just like we did for the player sprite, we need to set the position of the hoop sprite. The hoop should go at the top of the playing screen. To do this you will need another ``||sprites:set sprite position||`` block.
+```blocks
+scene.setBackgroundImage(img`
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+    d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d
+`)
+let mySprite = sprites.create(img`
+    . f f f . f f f f . f f f .
+    f f f f f c c c c f f f f f
+    f f f f b c c c c b f f f f
+    f f f c 3 c c c c 3 c f f f
+    . f 3 3 c c c c c c 3 3 f .
+    . f c c c c 4 4 c c c c f .
+    . f f c c 4 4 4 4 c c f f .
+    . f f f b f 4 4 f b f f f .
+    . f f 4 1 f d d f 1 4 f f .
+    . . f f d d d d d d f f . .
+    . . e f e 4 4 4 4 e f e . .
+    . e 4 f b 3 3 3 3 b f 4 e .
+    . 4 d f 3 3 3 3 3 3 c d 4 .
+    . 4 4 f 6 6 6 6 6 6 f 4 4 .
+    . . . . f f f f f f . . . .
+    . . . . f f . . f f . . . .
+`, SpriteKind.Player)
+mySprite.setPosition(82, 111)
+mySprite.setVelocity(50, 0)
+mySprite.setFlag(SpriteFlag.BounceOnWall, true)
+let mySprite2 = sprites.create(img`
+    . . . e e e e e e e e e e e . .
+    . . e e e e e e e e e e e e e .
+    . 1 e . . . . . . . . . . . e 1
+    1 1 e e . . . . . . . . . e e .
+    1 . . e e . . . . . . . . e . .
+    1 1 1 e e e . . . . . . e e 1 1
+    1 . . . e e . . . . . e e e . .
+    . . 1 1 . e e e e e e e e 1 1 .
+    . 1 1 . . 1 e e e e e e 1 . 1 1
+    1 1 . . 1 . . 1 . . 1 . 1 1 . .
+    1 . . 1 1 . . 1 . . 1 . . 1 1 .
+    . . . 1 . . . 1 . . 1 . . . 1 .
+    . . . . . . . . . . 1 . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`, SpriteKind.Player)
+```
 
-Check the hint to see what your code should look like so far. 
+## Step 7 - Set the Basketball Hoop Kind
+
+In the ``||variables:set mySprite2||`` block, click on ``||sprites:Player||`` from the kind
+drop-down menu, select **Add a new kind**, and type in **Hoop**.
+
+![Change from Player kind](/static/tutorials/free-throw/player-kind.png)
+
+## Step 8 - Set the Position of the Basketball Hoop to the top of the screen
+
+From the ``||sprites:Sprites||`` Toolbox drawer, drag a ``||sprites:set||`` ``||variables:mySprite||``
+``||sprites:position||`` block and drop after the ``||variables:set mySprite2||`` block. In the
+``||sprites:set||`` ``||variables:mySprite||`` ``||sprites:position||`` block, click on the ``||variables:mySprite||``
+drop-down menu, and select ``||variables:mySprite2||``. Then click on the **x** coordinate, and using the coordinate
+picker, select a location at the top center of the screen.
+
+![Set x position to 75](/static/tutorials/free-throw/x-position75.png)
+
+## Step 9 - Use a key to shoot basketballs
+
+From the ``||controller:controller||`` Toolbox drawer, drag a ``||controller:on button pressed||``
+block into the Workspace. Click on the **A** drop-down menu to select any button.
+
+```blocks
+controller.anyButton.onEvent(ControllerButtonEvent.Pressed, function () {
+
+})
+```
+
+## Step 10 - Shoot the Basketballs
+
+From the ``||sprites:Sprites||`` Toolbox drawer, drag a ``||variables:set projectile to||``
+``||sprites:projectile from||`` ``||variables:mySprite||`` block and drop into the ``||controller:on button pressed||``
+block. Click on the grey oval to open the sprite image editor and draw an image of a basketball
+(hint: try using the circle tool in the image editor).
+
+```blocks
+let mySprite: Sprite = null
+let projectile: Sprite = null
+controller.anyButton.onEvent(ControllerButtonEvent.Pressed, function () {
+    projectile = sprites.createProjectileFromSprite(img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . 4 4 4 4 4 4 4 . . . . .
+        . . . 4 f 4 4 4 4 4 f 4 . . . .
+        . . . 4 f f 4 4 4 f f 4 . . . .
+        . . . 4 4 f f f f f 4 4 . . . .
+        . . . 4 4 4 4 4 4 4 4 4 . . . .
+        . . . 4 4 f f f f f 4 4 . . . .
+        . . . 4 f f 4 4 4 f f 4 . . . .
+        . . . 4 f 4 4 4 4 4 f 4 . . . .
+        . . . . 4 4 4 4 4 4 4 . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `, mySprite, 50, 100)
+})
+```
+
+## Step 11 - Set the velocity (movement) of the basketballs
+
+We want the basketballs to travel from our Player character vertically upwards. In the
+``||variables:set projectile||`` block, set the **vx** value to **0**, and set the **vy**
+value to **-100**.
+
+![Select Hoop kind](/static/tutorials/free-throw/projectile-vy.png)
+
+## Step 12 - Win when we get a basket
+
+From the ``||sprites:Sprites||`` Toolbox drawer, drag an ``||sprites:on||`` ``||variables:mySprite||``
+``||sprites:overlaps||``block and drop on the Workspace.
+
+```blocks
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Player, function (sprite, otherSprite) {
+
+})
+```
+
+## Step 13 - Win when we get a basket
+
+Click on both the ``||sprites:Player||`` kind drop-down menus and change one to
+``||sprites:Projectile||`` and the other to ``||sprites:Hoop||``.
+
+![Select Hoop kind](/static/tutorials/free-throw/hoop-kind.png)
+
+## Step 14 - Win when we get a basket
+
+From the ``||game:Game||`` Toolbox drawer, drag a ``||game:game over||`` block, and drop into
+the ``||sprites:on sprite overlaps||`` block. Click on the toggle to **WIN**.
 
 ```blocks
 namespace SpriteKind {
-    export const hoop = SpriteKind.create()
+    export const Hoop = SpriteKind.create()
 }
-
-let superStar = sprites.create(img`
-    . f f f . f f f f . f f f . 
-    f f f f f c c c c f f f f f 
-    f f f f b c c c c b f f f f 
-    f f f c 3 c c c c 3 c f f f 
-    . f 3 3 c c c c c c 3 3 f . 
-    . f c c c c 4 4 c c c c f . 
-    . f f c c 4 4 4 4 c c f f . 
-    . f f f b f 4 4 f b f f f . 
-    . f f 4 1 f d d f 1 4 f f . 
-    . . f f d d d d d d f f . . 
-    . . e f e 4 4 4 4 e f e . . 
-    . e 4 f b 3 3 3 3 b f 4 e . 
-    . 4 d f 3 3 3 3 3 3 c d 4 . 
-    . 4 4 f 6 6 6 6 6 6 f 4 4 . 
-    . . . . f f f f f f . . . . 
-    . . . . f f . . f f . . . . 
-    `, SpriteKind.Player)
-superStar.setPosition(80, 98)
-superStar.setVelocity(50, 0)
-superStar.setFlag(SpriteFlag.BounceOnWall, true)
-let net = sprites.create(img`
-    . . . . e e e e e e e . . . . . 
-    . . . e e . . . . . e e . . . . 
-    . . . e . . . . . . . . e . . . 
-    . . . e . . . . . . . . e e . . 
-    . . . e e e . . . . . . e e 1 . 
-    . . . 1 . e e e e e e e e . 1 . 
-    . . . 1 . . 1 . . 1 . 1 . . 1 . 
-    . . . 1 . . 1 . . 1 . . 1 . . . 
-    . . . 1 . . 1 . . 1 . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.hoop)
-net.setPosition(80, 10)
-```
-
-## _
-### Make Basketball Sprite
-So far, all of the code that we have created has been on under the ``||loops:On Start||`` block, meaning that it will be activated when the game starts.
-For this next sprite, we want it to be activated when the ``||controller:on A button pressed||``.
-In the ``||controller:controls||`` category, find this block and place it on the board separate from the other code blocks. 
-
-```blocks
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-	
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Hoop, function (sprite, otherSprite) {
+    game.over(true)
 })
 ```
-
-## _
-### Throw That Ball
-From the Sprites category in the toolbox, drag the ``||sprites:set projectile to __ from mySprite||`` sprite block and attach it to the new empty on A button pressed block.
-Click on the first grey oval to open the sprite image editor and draw an image of the projectile that you want to throw (this could be a basketball).
-For this game we want the projectiles to travel up vertically, so set the **vx** value to **0** and the **vy** value to **-100**. 
-
-```blocks
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    projectile = sprites.createProjectileFromSprite(img`
-        . . . . . . b b b b a a . . . . 
-        . . . . b b d d d 3 3 3 a a . . 
-        . . . b d d d 3 3 3 3 3 3 a a . 
-        . . b d d 3 3 3 3 3 3 3 3 3 a . 
-        . b 3 d 3 3 3 3 3 b 3 3 3 3 a b 
-        . b 3 3 3 3 3 a a 3 3 3 3 3 a b 
-        b 3 3 3 3 3 a a 3 3 3 3 d a 4 b 
-        b 3 3 3 3 b a 3 3 3 3 3 d a 4 b 
-        b 3 3 3 3 3 3 3 3 3 3 d a 4 4 e 
-        a 3 3 3 3 3 3 3 3 3 d a 4 4 4 e 
-        a 3 3 3 3 3 3 3 d d a 4 4 4 e . 
-        a a 3 3 3 d d d a a 4 4 4 e e . 
-        . e a a a a a a 4 4 4 4 e e . . 
-        . . e e b b 4 4 4 4 b e e . . . 
-        . . . e e e e e e e e . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, superStar, 0, -100)
-})
-```
-
-## _
-### Trigger A Winner 
-We're almost finished! In the ``||sprites:Sprites||`` category in the Toolbox drag the block ``||sprites:on sprite kind of player overlaps||`` onto the workspace. 
-
-**very important!** We need to make sure the **kinds** are correct!
-Use the drop down menu to change the first **player** to **projectile** and the second **player** to **hoop**.
-This tells the game that we want something to happen when the ball interacts with the hoop. 
-
-What do we want to happen when this occurs? Well we want the player to win! From the **Game** section in the toolbox find the ``||game:game over||`` code block and toggle the switch over to **win**. 
-
-```blocks
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.hoop, function (sprite, otherSprite) {
-    game.over(true, effects.confetti)
-})
-```
-
-## _
-### Test and Check
-Test out your game! Find out where the bugs are in your code and work to debug them, you can do it! 
