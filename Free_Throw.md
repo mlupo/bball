@@ -1,6 +1,6 @@
 # Basketball Free Throw
 
-## Introduction @fullscreen
+## Introduction @showdialog
 
 Line up your shot and see if you can slam dunk this Basketball free throw game!
 
